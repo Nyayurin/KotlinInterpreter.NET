@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Tqun/vsKU+E=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Yurn\\RiderProjects\\Kotlin\\Kotlin\\Kotlin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yurn\\.nuget\\packages\\antlr4.runtime.standard\\4.13.1\\antlr4.runtime.standard.4.13.1.nupkg.sha512"
+  ],
+  "logs": []
+}
