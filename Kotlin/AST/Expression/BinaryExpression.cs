@@ -2,19 +2,19 @@
 
 namespace Kotlin.AST.Expression;
 
-public class InfixFunctionCallExpression(
-    string identifier,
+public class BinaryExpression(
+    string op,
     Expression left,
     Expression right
 ) : Expression {
-    public string identifier { get; } = identifier;
-    public Expression left { get; } = left;
-    public Expression right { get; } = right;
-    
+    public readonly string op = op;
+    public readonly Expression left = left;
+    public readonly Expression right = right;
+
     public override string ToString() => new StringBuilder()
-        .Append(nameof(InfixFunctionCallExpression))
+        .Append(nameof(BinaryExpression))
         .Append('(')
-        .appendProperty(nameof(identifier), identifier)
+        .appendProperty(nameof(op), op)
         .Append(", ")
         .appendProperty(nameof(left), left)
         .Append(", ")

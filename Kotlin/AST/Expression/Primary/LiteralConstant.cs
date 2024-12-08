@@ -5,6 +5,8 @@ namespace Kotlin.AST.Expression.Primary;
 public abstract class LiteralConstant : PrimaryExpression;
 
 public class BooleanLiteral(bool value) : LiteralConstant {
+    public bool value { get; } = value;
+    
     public override string ToString() => new StringBuilder()
         .Append(nameof(BooleanLiteral))
         .Append('(')
@@ -14,6 +16,8 @@ public class BooleanLiteral(bool value) : LiteralConstant {
 }
 
 public class IntegerLiteral(int value) : LiteralConstant {
+    public int value { get; } = value;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(IntegerLiteral))
         .Append('(')
@@ -23,6 +27,8 @@ public class IntegerLiteral(int value) : LiteralConstant {
 }
 
 public class CharacterLiteral(char value) : LiteralConstant {
+    public char value { get; } = value;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(CharacterLiteral))
         .Append('(')
@@ -32,6 +38,8 @@ public class CharacterLiteral(char value) : LiteralConstant {
 }
 
 public class RealLiteral(double value) : LiteralConstant {
+    public double value { get; } = value;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(RealLiteral))
         .Append('(')
@@ -47,6 +55,8 @@ public class NullLiteral : LiteralConstant {
 }
 
 public class LongLiteral(long value) : LiteralConstant {
+    public long value { get; } = value;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(LongLiteral))
         .Append('(')
@@ -56,6 +66,8 @@ public class LongLiteral(long value) : LiteralConstant {
 }
 
 public class UnsignedLiteral(ulong value) : LiteralConstant {
+    public ulong value { get; } = value;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(UnsignedLiteral))
         .Append('(')

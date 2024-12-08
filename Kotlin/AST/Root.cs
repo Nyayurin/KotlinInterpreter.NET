@@ -1,8 +1,11 @@
-﻿using System.Text;
+﻿using System.Collections.Immutable;
+using System.Text;
 
 namespace Kotlin.AST;
 
-public class KotlinFile(List<Declaration> topLevelObjects) : AstNode {
+public class KotlinFile(ImmutableList<Declaration> topLevelObjects) : AstNode {
+    public ImmutableList<Declaration> topLevelObjects { get; } = topLevelObjects;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(KotlinFile))
         .Append('(')

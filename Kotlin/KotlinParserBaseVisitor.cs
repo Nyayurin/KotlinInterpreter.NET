@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using System.Security.AccessControl;
+﻿using System.Collections.Immutable;
+using System.Globalization;
 using Antlr4.Runtime.Tree;
 using Kotlin.AST;
 using Kotlin.AST.Expression;
@@ -11,7 +11,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     public AstNode visitKotlinFile(KotlinParser.KotlinFileContext context) {
         return new KotlinFile(context.topLevelObject()
             .Select(it => (Declaration)it.Accept(this))
-            .ToList());
+            .ToImmutableList());
     }
 
     public AstNode visitScript(KotlinParser.ScriptContext context) {
@@ -277,7 +277,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     public AstNode visitStatements(KotlinParser.StatementsContext context) {
         return new Statements(context.statement()
             .Select(it => (Statement)it.Accept(this))
-            .ToList());
+            .ToImmutableList());
     }
 
     public AstNode visitStatement(KotlinParser.StatementContext context) {
@@ -333,73 +333,85 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     }
 
     public AstNode visitDisjunction(KotlinParser.DisjunctionContext context) {
-        return new DisjunctionExpression(
-            left: (ConjunctionExpression)context.conjunction(0).Accept(this),
-            right: context.conjunction().Skip(1)
-                .Select(it => (ConjunctionExpression)it.Accept(this))
-                .ToList()
-        );
+        var sub = context.conjunction();
+
+        return sub.Skip(1)
+            .Aggregate((Expression)sub.First().Accept(this), (current, subContext) =>
+                new BinaryExpression("||", current, (Expression)subContext.Accept(this))
+            );
     }
 
     public AstNode visitConjunction(KotlinParser.ConjunctionContext context) {
-        return new ConjunctionExpression(
-            left: (EqualityExpression)context.equality(0).Accept(this),
-            right: context.equality().Skip(1)
-                .Select(it => (EqualityExpression)it.Accept(this))
-                .ToList()
-        );
+        var sub = context.equality();
+
+        return sub.Skip(1)
+            .Aggregate((Expression)sub.First().Accept(this), (current, subContext) =>
+                new BinaryExpression("&&", current, (Expression)subContext.Accept(this))
+            );
     }
 
     public AstNode visitEquality(KotlinParser.EqualityContext context) {
-        return new EqualityExpression(
-            left: (ComparisonExpression)context.comparison(0).Accept(this),
-            right: context.comparison().Skip(1)
-                .Select((it, index) => (
-                    (EqualityOperator)context.equalityOperator(index).Accept(this),
-                    (ComparisonExpression)it.Accept(this)
-                ))
-                .ToList()
-        );
+        var sub = context.comparison().Skip(1).ToList();
+        var expression = (Expression)context.comparison(0).Accept(this);
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new BinaryExpression(
+                op: context.equalityOperator(i).GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitComparison(KotlinParser.ComparisonContext context) {
-        return new ComparisonExpression(
-            left: (GenericCallLikeComparisonExpression)context.genericCallLikeComparison(0).Accept(this),
-            right: context.genericCallLikeComparison().Skip(1)
-                .Select((it, index) => (
-                    (ComparisonOperator)context.comparisonOperator(index).Accept(this),
-                    (GenericCallLikeComparisonExpression)it.Accept(this)
-                ))
-                .ToList()
-        );
+        var sub = context.genericCallLikeComparison().Skip(1).ToList();
+        var expression = (Expression)context.genericCallLikeComparison(0).Accept(this);
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new BinaryExpression(
+                op: context.comparisonOperator(i).GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitGenericCallLikeComparison(KotlinParser.GenericCallLikeComparisonContext context) {
-        return new GenericCallLikeComparisonExpression(
-            left: (InfixOperationExpression)context.infixOperation().Accept(this),
-            right: context.callSuffix()
-                .Select(it => (PostfixUnarySuffix.CallSuffix)it.Accept(this))
-                .ToList()
-        );
+        return context.callSuffix()
+            .Aggregate((Expression)context.infixOperation().Accept(this), (current, callSuffixContext) =>
+                new PostfixUnaryExpression((PostfixUnarySuffix)callSuffixContext.Accept(this), current)
+            );
     }
 
     public AstNode visitInfixOperation(KotlinParser.InfixOperationContext context) {
-        return new InfixOperationExpression(
-            left: (ElvisExpression)context.elvisExpression(0).Accept(this),
-            right: context.elvisExpression().Skip(1)
-                .Select(it => new InfixOperationExpression.Sub.Elvis((ElvisExpression)it.Accept(this)))
-                .Cast<InfixOperationExpression.Sub>()
-                .ToList()
-        );
+        var sub = context.children.Skip(1).SkipWhile(tree => tree is ITerminalNode).ToList();
+        var expression = (Expression)context.elvisExpression(0).Accept(this);
+
+        for (var i = 0; i < sub.Count / 2; i++) {
+            var op = sub[i * 2];
+            expression = op switch {
+                KotlinParser.InOperatorContext => new InfixOperationExpression.InOperator(left: expression,
+                    right: (Expression)sub[i * 2 + 1].Accept(this)),
+                KotlinParser.IsOperatorContext => new InfixOperationExpression.IsOperator(expression: expression,
+                    type: (Expression)sub[i * 2 + 1].Accept(this)),
+                _ => expression
+            };
+        }
+
+        return expression;
     }
 
     public AstNode visitElvisExpression(KotlinParser.ElvisExpressionContext context) {
-        return new ElvisExpression(
-            left: (InfixFunctionCallExpression)context.infixFunctionCall(0).Accept(this),
-            right: context.infixFunctionCall().Skip(1)
-                .Select(it => (InfixFunctionCallExpression)it.Accept(this))
-                .ToList()
-        );
+        var sub = context.infixFunctionCall();
+
+        return sub.Skip(1)
+            .Aggregate((Expression)sub.First().Accept(this), (current, subContext) =>
+                new BinaryExpression("?:", current, (Expression)subContext.Accept(this))
+            );
     }
 
     public AstNode visitElvis(KotlinParser.ElvisContext context) {
@@ -407,77 +419,89 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     }
 
     public AstNode visitInfixFunctionCall(KotlinParser.InfixFunctionCallContext context) {
-        return new InfixFunctionCallExpression(
-            left: (RangeExpression)context.rangeExpression(0).Accept(this),
-            right: context.rangeExpression().Skip(1)
-                .Select((it, index) => (
-                    context.simpleIdentifier(index).GetText(), (RangeExpression)it.Accept(this))
-                )
-                .ToList()
-        );
+        var sub = context.rangeExpression().Skip(1).ToList();
+        var expression = (Expression)context.rangeExpression(0).Accept(this);
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new InfixFunctionCallExpression(
+                identifier: context.simpleIdentifier(i).GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitRangeExpression(KotlinParser.RangeExpressionContext context) {
-        var operators = context.children
-            .Where(tree => tree is ITerminalNode node && node.Symbol.Type == KotlinParser.NL)
-            .Cast<ITerminalNode>()
-            .ToList();
-        return new RangeExpression(
-            left: (AdditiveExpression)context.additiveExpression(0).Accept(this),
-            right: context.additiveExpression().Skip(1)
-                .Select((it, index) => (
-                    operators[index].Symbol.Type == KotlinParser.RANGE
-                        ? RangeExpression.RangeOperator.Range
-                        : RangeExpression.RangeOperator.RangeUtil,
-                    (AdditiveExpression)it.Accept(this))
-                )
-                .ToList()
-        );
+        var sub = context.additiveExpression().Skip(1).ToList();
+        var expression = (Expression)context.additiveExpression(0).Accept(this);
+        var op = context.children
+            .Where(tree => tree is ITerminalNode node && node.Symbol.Type != KotlinParser.NL).ToList();
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new BinaryExpression(
+                op: op[i].GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitAdditiveExpression(KotlinParser.AdditiveExpressionContext context) {
-        return new AdditiveExpression(
-            left: (MultiplicativeExpression)context.multiplicativeExpression(0).Accept(this),
-            right: context.multiplicativeExpression().Skip(1)
-                .Select((it, index) => (
-                    (AdditiveOperator)context.additiveOperator(index).Accept(this),
-                    (MultiplicativeExpression)it.Accept(this))
-                )
-                .ToList()
-        );
+        var sub = context.multiplicativeExpression().Skip(1).ToList();
+        var expression = (Expression)context.multiplicativeExpression(0).Accept(this);
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new BinaryExpression(
+                op: context.additiveOperator(i).GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitMultiplicativeExpression(KotlinParser.MultiplicativeExpressionContext context) {
-        return new MultiplicativeExpression(
-            left: (AsExpression)context.asExpression(0).Accept(this),
-            right: context.asExpression().Skip(1)
-                .Select((it, index) => (
-                    (MultiplicativeOperator)context.multiplicativeOperator(index).Accept(this),
-                    (AsExpression)it.Accept(this))
-                )
-                .ToList()
-        );
+        var sub = context.asExpression().Skip(1).ToList();
+        var expression = (Expression)context.asExpression(0).Accept(this);
+
+        for (var i = 0; i < sub.Count; i++) {
+            expression = new BinaryExpression(
+                op: context.multiplicativeOperator(i).GetText(),
+                left: expression,
+                right: (Expression)sub[i].Accept(this)
+            );
+        }
+
+        return expression;
     }
 
     public AstNode visitAsExpression(KotlinParser.AsExpressionContext context) {
-        return new AsExpression(
-            left: (PrefixUnaryExpression)context.prefixUnaryExpression().Accept(this),
-            right: context.type()
-                .Select((it, index) => (
-                    (AsOperator)context.asOperator(index).Accept(this),
-                    (Type)it.Accept(this).GetType())
-                )
-                .ToList()
-        );
+        var sub = context.asOperator();
+        var expression = (Expression)context.prefixUnaryExpression().Accept(this);
+
+        for (var i = 0; i < sub.Length; i++) {
+            if (sub[i].AS() != null) {
+                expression = new AsExpression.As(expression, (Expression)context.type(i).Accept(this));
+            }
+
+            if (sub[i].AS_SAFE() != null) {
+                expression = new AsExpression.AsSafe(expression, (Expression)context.type(i).Accept(this));
+            }
+        }
+
+        return expression;
     }
 
     public AstNode visitPrefixUnaryExpression(KotlinParser.PrefixUnaryExpressionContext context) {
-        return new PrefixUnaryExpression(
-            prefixes: context.unaryPrefix()
-                .Select(it => (UnaryPrefix)it.Accept(this))
-                .ToList(),
-            expression: (PostfixUnaryExpression)context.postfixUnaryExpression().Accept(this)
-        );
+        return context.unaryPrefix()
+            .Aggregate((Expression)context.postfixUnaryExpression().Accept(this), (current, subContext) =>
+                new PrefixUnaryExpression((UnaryPrefix)subContext.Accept(this), current)
+            );
     }
 
     public AstNode visitUnaryPrefix(KotlinParser.UnaryPrefixContext context) {
@@ -490,19 +514,17 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
         }
 
         if (context.prefixUnaryOperator() != null) {
-            return new UnaryPrefix.Operator();
+            return new UnaryPrefix.Operator(context.prefixUnaryOperator().GetText());
         }
 
         return VisitChildren(context);
     }
 
     public AstNode visitPostfixUnaryExpression(KotlinParser.PostfixUnaryExpressionContext context) {
-        return new PostfixUnaryExpression(
-            expression: (PrimaryExpression)context.primaryExpression().Accept(this),
-            suffixes: context.postfixUnarySuffix()
-                .Select(it => (PostfixUnarySuffix)it.Accept(this))
-                .ToList()
-        );
+        return context.postfixUnarySuffix()
+            .Aggregate((Expression)context.primaryExpression().Accept(this), (current, subContext) =>
+                new PostfixUnaryExpression((PostfixUnarySuffix)subContext.Accept(this), current)
+            );
     }
 
     public AstNode visitPostfixUnarySuffix(KotlinParser.PostfixUnarySuffixContext context) {
@@ -574,7 +596,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     public AstNode visitValueArguments(KotlinParser.ValueArgumentsContext context) {
         return new ValueArguments(context.valueArgument()
             .Select(it => (ValueArgument)it.Accept(this))
-            .ToList()
+            .ToImmutableList()
         );
     }
 
@@ -584,7 +606,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
 
     public AstNode visitPrimaryExpression(KotlinParser.PrimaryExpressionContext context) {
         if (context.parenthesizedExpression() != null) {
-            return new ParenthesizedExpression((Expression)context.parenthesizedExpression().Accept(this));
+            return context.parenthesizedExpression().Accept(this);
         }
 
         if (context.simpleIdentifier() != null) {
@@ -598,7 +620,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
         if (context.stringLiteral() != null) {
             return context.stringLiteral().Accept(this);
         }
-        
+
         return VisitChildren(context);
     }
 
@@ -665,7 +687,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
     public AstNode visitLineStringLiteral(KotlinParser.LineStringLiteralContext context) {
         return new StringLiteral(context.children.Skip(1).SkipLast(1)
             .Select(tree => (StringLiteral.Sub)tree.Accept(this))
-            .ToList());
+            .ToImmutableList());
     }
 
     public AstNode visitMultiLineStringLiteral(KotlinParser.MultiLineStringLiteralContext context) {
@@ -677,7 +699,7 @@ public class KotlinParserBaseVisitor : AbstractParseTreeVisitor<AstNode>, IKotli
 
                 return (StringLiteral.Sub)tree.Accept(this);
             })
-            .ToList());
+            .ToImmutableList());
     }
 
     public AstNode visitLineStringContent(KotlinParser.LineStringContentContext context) {

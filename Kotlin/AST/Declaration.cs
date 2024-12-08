@@ -9,6 +9,9 @@ public class ClassDeclaration : Declaration;
 public class ObjectDeclaration : Declaration;
 
 public class FunctionDeclaration(string name, Block body) : Declaration {
+    public string name { get; } = name;
+    public Block body { get; } = body;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(FunctionDeclaration))
         .Append('(')

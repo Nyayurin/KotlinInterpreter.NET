@@ -3,13 +3,19 @@ using Kotlin.AST.Expression.Primary;
 
 namespace Kotlin.AST.Expression;
 
-public class PostfixUnaryExpression(PrimaryExpression expression, List<PostfixUnarySuffix> suffixes) : Expression {
+public class PostfixUnaryExpression(
+    PostfixUnarySuffix op,
+    Expression expression
+) : Expression {
+    public readonly PostfixUnarySuffix op = op;
+    public readonly Expression expression = expression;
+
     public override string ToString() => new StringBuilder()
         .Append(nameof(PostfixUnaryExpression))
         .Append('(')
-        .appendProperty(nameof(expression), expression)
+        .appendProperty(nameof(op), op)
         .Append(", ")
-        .appendList(nameof(suffixes), suffixes)
+        .appendProperty(nameof(expression), expression)
         .Append(')')
         .ToString();
 }
@@ -20,6 +26,8 @@ public abstract class PostfixUnarySuffix : Expression {
     public class TypeArguments : PostfixUnarySuffix;
 
     public class CallSuffix(ValueArguments valueArguments) : PostfixUnarySuffix {
+        public ValueArguments valueArguments { get; } = valueArguments;
+        
         public override string ToString() => new StringBuilder()
             .Append(nameof(CallSuffix))
             .Append('(')

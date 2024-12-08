@@ -3,6 +3,8 @@
 namespace Kotlin.AST;
 
 public class Block(Statements statements) : AstNode {
+    public Statements statements { get; } = statements;
+    
     public override string ToString() => new StringBuilder()
         .Append(nameof(Block))
         .Append('(')
