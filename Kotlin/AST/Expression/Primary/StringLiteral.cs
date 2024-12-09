@@ -9,7 +9,7 @@ public class StringLiteral(ImmutableList<StringLiteral.Sub> contents) : PrimaryE
     public override string ToString() => new StringBuilder()
         .Append(nameof(StringLiteral))
         .Append('(')
-        .appendList(nameof(contents), contents)
+        .appendProperty(nameof(contents), contents)
         .Append(')')
         .ToString();
     

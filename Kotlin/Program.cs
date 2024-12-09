@@ -10,8 +10,8 @@ public static class Program {
         var tokens = new CommonTokenStream(lexer);
         var parser = new KotlinParser(tokens);
         var file = parser.kotlinFile();
-        var visitor = new KotlinParserBaseVisitor();
-        var root = visitor.visitKotlinFile(file);
+        var visitor = new Visitor();
+        var root = visitor.VisitKotlinFile(file);
         // Console.WriteLine(root);
         var interpreter = new Interpreter();
         interpreter.run(root);

@@ -32,7 +32,6 @@ using Kotlin;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.2")]
-[System.CLSCompliant(false)]
 public partial class KotlinParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
@@ -288,7 +287,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitKotlinFile(this);
+			if (typedVisitor != null) return typedVisitor.VisitKotlinFile(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -416,7 +415,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitScript(this);
+			if (typedVisitor != null) return typedVisitor.VisitScript(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -521,7 +520,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitShebangLine(this);
+			if (typedVisitor != null) return typedVisitor.VisitShebangLine(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -594,7 +593,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFileAnnotation(this);
+			if (typedVisitor != null) return typedVisitor.VisitFileAnnotation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -775,7 +774,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPackageHeader(this);
+			if (typedVisitor != null) return typedVisitor.VisitPackageHeader(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -838,7 +837,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitImportList(this);
+			if (typedVisitor != null) return typedVisitor.VisitImportList(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -901,7 +900,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitImportHeader(this);
+			if (typedVisitor != null) return typedVisitor.VisitImportHeader(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1072,7 +1071,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitImportAlias(this);
+			if (typedVisitor != null) return typedVisitor.VisitImportAlias(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1116,7 +1115,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTopLevelObject(this);
+			if (typedVisitor != null) return typedVisitor.VisitTopLevelObject(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1181,7 +1180,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeAlias(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeAlias(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1315,7 +1314,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1417,7 +1416,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1691,7 +1690,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPrimaryConstructor(this);
+			if (typedVisitor != null) return typedVisitor.VisitPrimaryConstructor(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1771,7 +1770,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassBody(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassBody(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1859,7 +1858,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassParameters(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassParameters(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2031,7 +2030,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassParameter(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassParameter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2184,7 +2183,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDelegationSpecifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitDelegationSpecifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2287,7 +2286,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDelegationSpecifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitDelegationSpecifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2384,7 +2383,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitConstructorInvocation(this);
+			if (typedVisitor != null) return typedVisitor.VisitConstructorInvocation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2450,7 +2449,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnnotatedDelegationSpecifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnnotatedDelegationSpecifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2532,7 +2531,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitExplicitDelegation(this);
+			if (typedVisitor != null) return typedVisitor.VisitExplicitDelegation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2634,7 +2633,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeParameters(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeParameters(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2792,7 +2791,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeParameter(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeParameter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -2908,7 +2907,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeConstraints(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeConstraints(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3025,7 +3024,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeConstraint(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeConstraint(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3120,7 +3119,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassMemberDeclarations(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassMemberDeclarations(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3191,7 +3190,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassMemberDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassMemberDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3262,7 +3261,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnonymousInitializer(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnonymousInitializer(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3335,7 +3334,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitCompanionObject(this);
+			if (typedVisitor != null) return typedVisitor.VisitCompanionObject(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3531,7 +3530,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionValueParameters(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionValueParameters(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3695,7 +3694,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionValueParameter(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionValueParameter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -3816,7 +3815,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4058,7 +4057,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionBody(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionBody(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4145,7 +4144,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitVariableDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitVariableDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4266,7 +4265,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiVariableDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiVariableDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4452,7 +4451,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPropertyDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitPropertyDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4891,7 +4890,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPropertyDelegate(this);
+			if (typedVisitor != null) return typedVisitor.VisitPropertyDelegate(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -4963,7 +4962,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitGetter(this);
+			if (typedVisitor != null) return typedVisitor.VisitGetter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5127,7 +5126,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSetter(this);
+			if (typedVisitor != null) return typedVisitor.VisitSetter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5326,7 +5325,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParametersWithOptionalType(this);
+			if (typedVisitor != null) return typedVisitor.VisitParametersWithOptionalType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5490,7 +5489,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionValueParameterWithOptionalType(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionValueParameterWithOptionalType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5591,7 +5590,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParameterWithOptionalType(this);
+			if (typedVisitor != null) return typedVisitor.VisitParameterWithOptionalType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5682,7 +5681,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParameter(this);
+			if (typedVisitor != null) return typedVisitor.VisitParameter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5769,7 +5768,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitObjectDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitObjectDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -5917,7 +5916,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSecondaryConstructor(this);
+			if (typedVisitor != null) return typedVisitor.VisitSecondaryConstructor(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6056,7 +6055,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitConstructorDelegationCall(this);
+			if (typedVisitor != null) return typedVisitor.VisitConstructorDelegationCall(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6129,7 +6128,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitEnumClassBody(this);
+			if (typedVisitor != null) return typedVisitor.VisitEnumClassBody(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6265,7 +6264,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitEnumEntries(this);
+			if (typedVisitor != null) return typedVisitor.VisitEnumEntries(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6391,7 +6390,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitEnumEntry(this);
+			if (typedVisitor != null) return typedVisitor.VisitEnumEntry(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6518,7 +6517,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitType(this);
+			if (typedVisitor != null) return typedVisitor.VisitType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6600,7 +6599,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeReference(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeReference(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6665,7 +6664,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitNullableType(this);
+			if (typedVisitor != null) return typedVisitor.VisitNullableType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6802,7 +6801,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitQuest(this);
+			if (typedVisitor != null) return typedVisitor.VisitQuest(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6860,7 +6859,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitUserType(this);
+			if (typedVisitor != null) return typedVisitor.VisitUserType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -6954,7 +6953,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSimpleUserType(this);
+			if (typedVisitor != null) return typedVisitor.VisitSimpleUserType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7022,7 +7021,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeProjection(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeProjection(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7140,7 +7139,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeProjectionModifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeProjectionModifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7205,7 +7204,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeProjectionModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeProjectionModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7288,7 +7287,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionType(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7419,7 +7418,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionTypeParameters(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionTypeParameters(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7598,7 +7597,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParenthesizedType(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7679,7 +7678,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitReceiverType(this);
+			if (typedVisitor != null) return typedVisitor.VisitReceiverType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7757,7 +7756,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParenthesizedUserType(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedUserType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -7912,7 +7911,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDefinitelyNonNullableType(this);
+			if (typedVisitor != null) return typedVisitor.VisitDefinitelyNonNullableType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8139,7 +8138,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitStatements(this);
+			if (typedVisitor != null) return typedVisitor.VisitStatements(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8236,7 +8235,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8386,7 +8385,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLabel(this);
+			if (typedVisitor != null) return typedVisitor.VisitLabel(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8455,7 +8454,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitControlStructureBody(this);
+			if (typedVisitor != null) return typedVisitor.VisitControlStructureBody(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8513,7 +8512,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitBlock(this);
+			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8594,7 +8593,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLoopStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitLoopStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8678,7 +8677,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitForStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitForStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -8862,7 +8861,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitWhileStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitWhileStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9063,7 +9062,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDoWhileStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitDoWhileStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9180,7 +9179,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAssignment(this);
+			if (typedVisitor != null) return typedVisitor.VisitAssignment(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9258,7 +9257,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSemi(this);
+			if (typedVisitor != null) return typedVisitor.VisitSemi(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9327,7 +9326,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSemis(this);
+			if (typedVisitor != null) return typedVisitor.VisitSemis(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9393,7 +9392,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9443,7 +9442,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDisjunction(this);
+			if (typedVisitor != null) return typedVisitor.VisitDisjunction(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9543,7 +9542,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitConjunction(this);
+			if (typedVisitor != null) return typedVisitor.VisitConjunction(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9645,7 +9644,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitEquality(this);
+			if (typedVisitor != null) return typedVisitor.VisitEquality(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9732,7 +9731,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitComparison(this);
+			if (typedVisitor != null) return typedVisitor.VisitComparison(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9812,7 +9811,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitGenericCallLikeComparison(this);
+			if (typedVisitor != null) return typedVisitor.VisitGenericCallLikeComparison(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -9893,7 +9892,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitInfixOperation(this);
+			if (typedVisitor != null) return typedVisitor.VisitInfixOperation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10013,7 +10012,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitElvisExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitElvisExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10101,7 +10100,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitElvis(this);
+			if (typedVisitor != null) return typedVisitor.VisitElvis(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10155,7 +10154,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitInfixFunctionCall(this);
+			if (typedVisitor != null) return typedVisitor.VisitInfixFunctionCall(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10244,7 +10243,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitRangeExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitRangeExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10339,7 +10338,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAdditiveExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitAdditiveExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10426,7 +10425,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiplicativeExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicativeExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10516,7 +10515,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAsExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitAsExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10609,7 +10608,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPrefixUnaryExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitPrefixUnaryExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10675,7 +10674,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitUnaryPrefix(this);
+			if (typedVisitor != null) return typedVisitor.VisitUnaryPrefix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10812,7 +10811,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPostfixUnaryExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitPostfixUnaryExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10880,7 +10879,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPostfixUnarySuffix(this);
+			if (typedVisitor != null) return typedVisitor.VisitPostfixUnarySuffix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -10962,7 +10961,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitDirectlyAssignableExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitDirectlyAssignableExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11029,7 +11028,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParenthesizedDirectlyAssignableExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedDirectlyAssignableExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11107,7 +11106,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAssignableExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitAssignableExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11165,7 +11164,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParenthesizedAssignableExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedAssignableExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11246,7 +11245,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAssignableSuffix(this);
+			if (typedVisitor != null) return typedVisitor.VisitAssignableSuffix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11323,7 +11322,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitIndexingSuffix(this);
+			if (typedVisitor != null) return typedVisitor.VisitIndexingSuffix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11481,7 +11480,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitNavigationSuffix(this);
+			if (typedVisitor != null) return typedVisitor.VisitNavigationSuffix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11612,7 +11611,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitCallSuffix(this);
+			if (typedVisitor != null) return typedVisitor.VisitCallSuffix(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11699,7 +11698,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnnotatedLambda(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnnotatedLambda(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11790,7 +11789,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeArguments(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeArguments(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -11946,7 +11945,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitValueArguments(this);
+			if (typedVisitor != null) return typedVisitor.VisitValueArguments(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12113,7 +12112,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitValueArgument(this);
+			if (typedVisitor != null) return typedVisitor.VisitValueArgument(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12287,7 +12286,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPrimaryExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitPrimaryExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12429,7 +12428,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParenthesizedExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12517,7 +12516,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitCollectionLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitCollectionLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12678,7 +12677,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLiteralConstant(this);
+			if (typedVisitor != null) return typedVisitor.VisitLiteralConstant(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12728,7 +12727,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitStringLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitStringLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12793,7 +12792,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLineStringLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitLineStringLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12880,7 +12879,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiLineStringLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiLineStringLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -12954,7 +12953,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLineStringContent(this);
+			if (typedVisitor != null) return typedVisitor.VisitLineStringContent(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13007,7 +13006,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLineStringExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitLineStringExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13082,7 +13081,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiLineStringContent(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiLineStringContent(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13135,7 +13134,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiLineStringExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiLineStringExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13220,7 +13219,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLambdaLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitLambdaLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13356,7 +13355,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLambdaParameters(this);
+			if (typedVisitor != null) return typedVisitor.VisitLambdaParameters(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13480,7 +13479,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitLambdaParameter(this);
+			if (typedVisitor != null) return typedVisitor.VisitLambdaParameter(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13645,7 +13644,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnonymousFunction(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnonymousFunction(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13856,7 +13855,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -13922,7 +13921,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitObjectLiteral(this);
+			if (typedVisitor != null) return typedVisitor.VisitObjectLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14068,7 +14067,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitThisExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitThisExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14127,7 +14126,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSuperExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitSuperExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14254,7 +14253,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitIfExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitIfExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14579,7 +14578,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitWhenSubject(this);
+			if (typedVisitor != null) return typedVisitor.VisitWhenSubject(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14725,7 +14724,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitWhenExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitWhenExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -14891,7 +14890,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitWhenEntry(this);
+			if (typedVisitor != null) return typedVisitor.VisitWhenEntry(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15204,7 +15203,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitWhenCondition(this);
+			if (typedVisitor != null) return typedVisitor.VisitWhenCondition(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15361,7 +15360,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitRangeTest(this);
+			if (typedVisitor != null) return typedVisitor.VisitRangeTest(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15426,7 +15425,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeTest(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeTest(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15496,7 +15495,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTryExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitTryExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15660,7 +15659,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitCatchBlock(this);
+			if (typedVisitor != null) return typedVisitor.VisitCatchBlock(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15783,7 +15782,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFinallyBlock(this);
+			if (typedVisitor != null) return typedVisitor.VisitFinallyBlock(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15850,7 +15849,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitJumpExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitJumpExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -15979,7 +15978,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitCallableReference(this);
+			if (typedVisitor != null) return typedVisitor.VisitCallableReference(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16110,7 +16109,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAssignmentAndOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitAssignmentAndOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16158,7 +16157,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitEqualityOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitEqualityOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16206,7 +16205,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitComparisonOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitComparisonOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16252,7 +16251,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitInOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitInOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16298,7 +16297,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitIsOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitIsOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16344,7 +16343,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAdditiveOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitAdditiveOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16391,7 +16390,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiplicativeOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicativeOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16437,7 +16436,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAsOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitAsOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16488,7 +16487,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPrefixUnaryOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitPrefixUnaryOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16567,7 +16566,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPostfixUnaryOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitPostfixUnaryOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16629,7 +16628,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitExcl(this);
+			if (typedVisitor != null) return typedVisitor.VisitExcl(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16682,7 +16681,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMemberAccessOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitMemberAccessOperator(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16769,7 +16768,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSafeNav(this);
+			if (typedVisitor != null) return typedVisitor.VisitSafeNav(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16819,7 +16818,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitModifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitModifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -16927,7 +16926,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParameterModifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitParameterModifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17027,7 +17026,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17157,7 +17156,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeModifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeModifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17220,7 +17219,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17293,7 +17292,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitClassModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17339,7 +17338,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMemberModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitMemberModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17387,7 +17386,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitVisibilityModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitVisibilityModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17433,7 +17432,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitVarianceModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitVarianceModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17483,7 +17482,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeParameterModifiers(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeParameterModifiers(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17551,7 +17550,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitTypeParameterModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeParameterModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17650,7 +17649,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitFunctionModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitFunctionModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17695,7 +17694,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPropertyModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitPropertyModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17734,7 +17733,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitInheritanceModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitInheritanceModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17781,7 +17780,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitParameterModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitParameterModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17826,7 +17825,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitReificationModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitReificationModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17864,7 +17863,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitPlatformModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitPlatformModifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17918,7 +17917,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnnotation(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnnotation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -17997,7 +17996,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSingleAnnotation(this);
+			if (typedVisitor != null) return typedVisitor.VisitSingleAnnotation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -18087,7 +18086,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitMultiAnnotation(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiAnnotation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -18191,7 +18190,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitAnnotationUseSiteTarget(this);
+			if (typedVisitor != null) return typedVisitor.VisitAnnotationUseSiteTarget(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -18266,7 +18265,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitUnescapedAnnotation(this);
+			if (typedVisitor != null) return typedVisitor.VisitUnescapedAnnotation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -18363,7 +18362,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitSimpleIdentifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitSimpleIdentifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -18421,7 +18420,7 @@ public partial class KotlinParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IKotlinParserVisitor<TResult> typedVisitor = visitor as IKotlinParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.visitIdentifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitIdentifier(this);
 			else return visitor.VisitChildren(this);
 		}
 	}

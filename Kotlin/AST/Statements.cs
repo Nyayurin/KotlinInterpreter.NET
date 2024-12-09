@@ -9,7 +9,7 @@ public class Statements(ImmutableList<Statement> statements) : AstNode {
     public override string ToString() => new StringBuilder()
         .Append(nameof(Statements))
         .Append('(')
-        .appendList(nameof(statements), statements)
+        .appendProperty(nameof(statements), statements)
         .Append(')')
         .ToString();
 }

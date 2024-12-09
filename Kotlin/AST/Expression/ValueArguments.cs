@@ -9,7 +9,7 @@ public class ValueArguments(ImmutableList<ValueArgument> arguments) : Expression
     public override string ToString() => new StringBuilder()
         .Append(nameof(ValueArguments))
         .Append('(')
-        .appendList(nameof(arguments), arguments)
+        .appendProperty(nameof(arguments), arguments)
         .Append(')')
         .ToString();
 }
