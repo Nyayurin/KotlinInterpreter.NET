@@ -29,6 +29,7 @@ using Antlr4.Runtime.Atn;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using Kotlin;
+using Kotlin.AST.Expression;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.2")]
@@ -3679,7 +3680,7 @@ public partial class KotlinParser : Parser {
 			return GetRuleContext<ParameterModifiersContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGNMENT() { return GetToken(KotlinParser.ASSIGNMENT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext? expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NL() { return GetTokens(KotlinParser.NL); }

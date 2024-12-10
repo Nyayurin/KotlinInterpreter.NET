@@ -8,8 +8,7 @@ public class BooleanLiteral(bool value) : LiteralConstant {
     public bool value { get; } = value;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(BooleanLiteral))
-        .Append('(')
+        .Append("BooleanLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();
@@ -19,8 +18,7 @@ public class IntegerLiteral(int value) : LiteralConstant {
     public int value { get; } = value;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(IntegerLiteral))
-        .Append('(')
+        .Append("IntegerLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();
@@ -30,8 +28,7 @@ public class CharacterLiteral(char value) : LiteralConstant {
     public char value { get; } = value;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(CharacterLiteral))
-        .Append('(')
+        .Append("CharacterLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();
@@ -41,8 +38,7 @@ public class RealLiteral(double value) : LiteralConstant {
     public double value { get; } = value;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(RealLiteral))
-        .Append('(')
+        .Append("RealLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();
@@ -51,15 +47,14 @@ public class RealLiteral(double value) : LiteralConstant {
 public class NullLiteral : LiteralConstant {
     public static readonly NullLiteral INSTANCE = new();
     private NullLiteral() { }
-    public override string ToString() => nameof(NullLiteral);
+    public override string ToString() => "NullLiteral";
 }
 
 public class LongLiteral(long value) : LiteralConstant {
     public long value { get; } = value;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(LongLiteral))
-        .Append('(')
+        .Append("LongLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();
@@ -69,8 +64,7 @@ public class UnsignedLiteral(ulong value) : LiteralConstant {
     public ulong value { get; } = value;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(UnsignedLiteral))
-        .Append('(')
+        .Append("UnsignedLiteral(")
         .appendProperty(nameof(value), value)
         .Append(')')
         .ToString();

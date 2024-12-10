@@ -12,7 +12,7 @@ public static class Program {
         var file = parser.kotlinFile();
         var visitor = new Visitor();
         var root = visitor.VisitKotlinFile(file);
-        // Console.WriteLine(root);
+        Console.WriteLine(root);
         var interpreter = new Interpreter();
         interpreter.run(root);
     }

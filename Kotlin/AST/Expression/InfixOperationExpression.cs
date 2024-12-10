@@ -11,8 +11,7 @@ public abstract class InfixOperationExpression : Expression {
         public readonly Expression right = right;
 
         public override string ToString() => new StringBuilder()
-            .Append(nameof(InOperator))
-            .Append('(')
+            .Append("InfixOperationExpression.InOperator(")
             .appendProperty(nameof(left), left)
             .Append(", ")
             .appendProperty(nameof(right), right)
@@ -28,8 +27,7 @@ public abstract class InfixOperationExpression : Expression {
         public readonly Expression type = type;
         
         public override string ToString() => new StringBuilder()
-            .Append(nameof(IsOperator))
-            .Append('(')
+            .Append("InfixOperationExpression.IsOperator(")
             .appendProperty(nameof(expression), expression)
             .Append(", ")
             .appendProperty(nameof(type), type)

@@ -5,16 +5,15 @@ namespace Kotlin.AST;
 
 public class KotlinFile(
     string? package,
-    ImmutableList<ImportHeader> imports,
-    ImmutableList<Declaration> declarations
+    List<ImportHeader> imports,
+    List<Declaration> declarations
 ) : AstNode {
     public string? package { get; } = package;
-    public ImmutableList<ImportHeader> imports { get; } = imports;
-    public ImmutableList<Declaration> declarations { get; } = declarations;
+    public ImmutableList<ImportHeader> imports { get; } = imports.ToImmutableList();
+    public ImmutableList<Declaration> declarations { get; } = declarations.ToImmutableList();
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(KotlinFile))
-        .Append('(')
+        .Append("KotlinFile(")
         .appendProperty(nameof(package), package)
         .Append(", ")
         .appendProperty(nameof(imports), imports)
@@ -26,16 +25,15 @@ public class KotlinFile(
 
 public class Script(
     string? package,
-    ImmutableList<ImportHeader> imports,
-    ImmutableList<Statement> statements
+    List<ImportHeader> imports,
+    List<Statement> statements
 ) : AstNode {
     public string? package { get; } = package;
-    public ImmutableList<ImportHeader> imports { get; } = imports;
-    public ImmutableList<Statement> statements { get; } = statements;
+    public ImmutableList<ImportHeader> imports { get; } = imports.ToImmutableList();
+    public ImmutableList<Statement> statements { get; } = statements.ToImmutableList();
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(Script))
-        .Append('(')
+        .Append("Script(")
         .appendProperty(nameof(package), package)
         .Append(", ")
         .appendProperty(nameof(imports), imports)

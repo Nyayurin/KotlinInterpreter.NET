@@ -12,8 +12,7 @@ public class BinaryExpression(
     public readonly Expression right = right;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(BinaryExpression))
-        .Append('(')
+        .Append("BinaryExpression(")
         .appendProperty(nameof(op), op)
         .Append(", ")
         .appendProperty(nameof(left), left)

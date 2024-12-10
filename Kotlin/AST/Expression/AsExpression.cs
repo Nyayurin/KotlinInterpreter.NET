@@ -8,8 +8,7 @@ public abstract class AsExpression : Expression {
         public readonly Expression type = type;
         
         public override string ToString() => new StringBuilder()
-            .Append(nameof(As))
-            .Append('(')
+            .Append("AsExpression.As(")
             .appendProperty(nameof(left), left)
             .Append(", ")
             .appendProperty(nameof(type), type)
@@ -22,8 +21,7 @@ public abstract class AsExpression : Expression {
         public readonly Expression type = type;
         
         public override string ToString() => new StringBuilder()
-            .Append(nameof(AsSafe))
-            .Append('(')
+            .Append("AsExpression.AsSafe(")
             .appendProperty(nameof(left), left)
             .Append(", ")
             .appendProperty(nameof(type), type)

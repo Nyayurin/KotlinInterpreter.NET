@@ -10,8 +10,7 @@ public class Parameter(
     public string type { get; } = type;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(Parameter))
-        .Append('(')
+        .Append("Parameter(")
         .appendProperty(nameof(name), name)
         .Append(", ")
         .appendProperty(nameof(type), type)

@@ -6,6 +6,7 @@ using Kotlin.AST.Expression.Primary;
 namespace Kotlin;
 
 public class Interpreter {
+    private Scope globalScope = new(null);
     private readonly Stack<Dictionary<string, object?>> scopes = new();
 
     public void run(AstNode node) {
@@ -57,7 +58,7 @@ public class Interpreter {
 
     private Func<object[], object?> block(Block node) {
         return objects => {
-            foreach (var statement in node.statements.statements) {
+            foreach (var statement in node.statements) {
                 switch (statement) {
                     case DeclarationStatement declarationStatementNode:
                         declarationStatement(declarationStatementNode);
@@ -112,7 +113,7 @@ public class Interpreter {
     private object? expression(Expression node) {
         if (node is PostfixUnaryExpression postfixUnaryExpression) {
             if (postfixUnaryExpression.op is PostfixUnarySuffix.CallSuffix callSuffix) {
-                var args = callSuffix.valueArguments.arguments
+                var args = callSuffix.valueArguments
                     .Select(argument => expression(argument.expression))
                     .Where(o => o != null)
                     .Cast<object>()

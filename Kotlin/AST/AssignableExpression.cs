@@ -7,8 +7,7 @@ public class AssignableExpression(PrefixUnaryExpression expression) : AstNode {
     public PrefixUnaryExpression expression { get; } = expression;
         
     public override string ToString() => new StringBuilder()
-        .Append(nameof(AssignableExpression))
-        .Append('(')
+        .Append("AssignableExpression(")
         .appendProperty(nameof(expression), expression)
         .Append(')')
         .ToString();

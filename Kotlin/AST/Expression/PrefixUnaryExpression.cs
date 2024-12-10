@@ -10,8 +10,7 @@ public class PrefixUnaryExpression(
     public readonly Expression expression = expression;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(PrefixUnaryExpression))
-        .Append('(')
+        .Append("PrefixUnaryExpression(")
         .appendProperty(nameof(op), op)
         .Append(", ")
         .appendProperty(nameof(expression), expression)
@@ -22,24 +21,21 @@ public class PrefixUnaryExpression(
 public abstract class UnaryPrefix : Expression {
     public class Annotation : UnaryPrefix {
         public override string ToString() => new StringBuilder()
-            .Append(nameof(Annotation))
-            .Append('(')
+            .Append("UnaryPrefix.Annotation(")
             .Append(')')
             .ToString();
     }
 
     public class Label : UnaryPrefix {
         public override string ToString() => new StringBuilder()
-            .Append(nameof(Label))
-            .Append('(')
+            .Append("UnaryPrefix.Label(")
             .Append(')')
             .ToString();
     }
 
     public class Operator(string op) : UnaryPrefix {
         public override string ToString() => new StringBuilder()
-            .Append(nameof(Operator))
-            .Append('(')
+            .Append("UnaryPrefix.Operator(")
             .appendProperty(nameof(op), op)
             .Append(')')
             .ToString();

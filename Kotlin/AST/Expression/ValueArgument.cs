@@ -6,8 +6,7 @@ public class ValueArgument(Expression expression) : Expression {
     public Expression expression { get; } = expression;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(ValueArgument))
-        .Append('(')
+        .Append("ValueArgument(")
         .appendProperty(nameof(expression), expression)
         .Append(')')
         .ToString();

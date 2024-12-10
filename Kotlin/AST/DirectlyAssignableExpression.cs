@@ -12,8 +12,7 @@ public abstract class DirectlyAssignableExpression : AstNode {
         public AssignableSuffix assignableSuffix { get; } = assignableSuffix;
         
         public override string ToString() => new StringBuilder()
-            .Append(nameof(Suffix))
-            .Append('(')
+            .Append("DirectlyAssignableExpression.Suffix(")
             .appendProperty(nameof(expression), expression)
             .Append(", ")
             .appendProperty(nameof(assignableSuffix), assignableSuffix)
@@ -25,8 +24,7 @@ public abstract class DirectlyAssignableExpression : AstNode {
         public string identifier { get; } = identifier;
         
         public override string ToString() => new StringBuilder()
-            .Append(nameof(Identifier))
-            .Append('(')
+            .Append("DirectlyAssignableExpression.Identifier(")
             .appendProperty(nameof(identifier), identifier)
             .Append(')')
             .ToString();

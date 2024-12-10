@@ -1,12 +1,7 @@
-﻿fun main() {
-    // Prints a message to request input
-    println("Enter any word: ")
-    
-    // Reads and stores the user input. For example: Happiness
-    val yourWord = readln()
-    
-    // Prints a message with the input
-    print("You entered the word: ")
-    print(yourWord)
-    // You entered the word: Happiness
+﻿class Rectangle(val height: Double, val length: Double) {
+    val perimeter = (height + length) * 2 
+}
+fun main() {
+    val rectangle = Rectangle(5.0, 2.0)
+    println("The perimeter is ${rectangle.perimeter}")
 }

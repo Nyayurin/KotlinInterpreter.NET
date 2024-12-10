@@ -6,21 +6,16 @@ namespace Kotlin.AST;
 public abstract class Declaration : AstNode;
 
 public class ClassDeclaration(
-    ImmutableList<Modifier> modifiers,
     string name,
     PrimaryConstructor? primaryConstructor,
-    ImmutableList<ClassMemberDeclaration> body
+    List<ClassMemberDeclaration> body
 ) : Declaration {
-    public ImmutableList<Modifier> modifiers { get; } = modifiers;
     public string name { get; } = name;
     public PrimaryConstructor? primaryConstructor { get; } = primaryConstructor;
-    public ImmutableList<ClassMemberDeclaration> body { get; } = body;
+    public ImmutableList<ClassMemberDeclaration> body { get; } = body.ToImmutableList();
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(ClassDeclaration))
-        .Append('(')
-        .appendProperty(nameof(modifiers), modifiers)
-        .Append(", ")
+        .Append("ClassDeclaration(")
         .appendProperty(nameof(name), name)
         .Append(", ")
         .appendProperty(nameof(primaryConstructor), primaryConstructor)
@@ -32,18 +27,17 @@ public class ClassDeclaration(
 
 public class FunctionDeclaration(
     string name,
-    ImmutableList<FunctionValueParameter> valueParameters,
+    List<FunctionValueParameter> valueParameters,
     string? type,
     Block body
 ) : Declaration {
     public string name { get; } = name;
-    public ImmutableList<FunctionValueParameter> valueParameters { get; } = valueParameters;
+    public ImmutableList<FunctionValueParameter> valueParameters { get; } = valueParameters.ToImmutableList();
     public string? type { get; } = type;
     public Block body { get; } = body;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(FunctionDeclaration))
-        .Append('(')
+        .Append("FunctionDeclaration(")
         .appendProperty(nameof(name), name)
         .Append(", ")
         .appendProperty(nameof(valueParameters), valueParameters)
@@ -67,8 +61,7 @@ public class PropertyDeclaration(
     public Expression.Expression expression { get; } = expression;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(PropertyDeclaration))
-        .Append('(')
+        .Append("PropertyDeclaration(")
         .appendProperty(nameof(mutable), mutable)
         .Append(", ")
         .appendProperty(nameof(name), name)

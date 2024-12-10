@@ -12,8 +12,7 @@ public class InfixFunctionCallExpression(
     public Expression right { get; } = right;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(InfixFunctionCallExpression))
-        .Append('(')
+        .Append("InfixFunctionCallExpression(")
         .appendProperty(nameof(identifier), identifier)
         .Append(", ")
         .appendProperty(nameof(left), left)

@@ -1,13 +1,13 @@
-﻿using System.Text;
+﻿using System.Collections.Immutable;
+using System.Text;
 
 namespace Kotlin.AST;
 
-public class Block(Statements statements) : AstNode {
-    public Statements statements { get; } = statements;
+public class Block(List<Statement> statements) : AstNode {
+    public ImmutableList<Statement> statements { get; } = statements.ToImmutableList();
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(Block))
-        .Append('(')
+        .Append("Block(")
         .appendProperty(nameof(statements), statements)
         .Append(')')
         .ToString();

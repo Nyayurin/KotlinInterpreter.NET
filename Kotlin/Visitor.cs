@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Globalization;
+﻿using System.Globalization;
 using Antlr4.Runtime.Tree;
 using Kotlin.AST;
 using Kotlin.AST.Expression;
@@ -26,25 +25,25 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         );
     }
 
-    private ImmutableList<ImportHeader> visitImports(KotlinParser.ImportListContext context) {
+    private List<ImportHeader> visitImports(KotlinParser.ImportListContext context) {
         return context.importHeader()
             .Select(it => it.Accept(this))
             .Cast<ImportHeader>()
-            .ToImmutableList();
+            .ToList();
     }
 
-    private ImmutableList<Declaration> visitTopLevelDeclarations(KotlinParser.TopLevelObjectContext[] context) {
+    private List<Declaration> visitTopLevelDeclarations(KotlinParser.TopLevelObjectContext[] context) {
         return context
-            .Select(it => it.Accept(this))
+            .Select(it => it.declaration().Accept(this))
             .Cast<Declaration>()
-            .ToImmutableList();
+            .ToList();
     }
 
-    private ImmutableList<Statement> visitStatements(KotlinParser.StatementContext[] context) {
+    private List<Statement> visitStatements(KotlinParser.StatementContext[] context) {
         return context
             .Select(it => it.Accept(this))
             .Cast<Statement>()
-            .ToImmutableList();
+            .ToList();
     }
 
     public override AstNode VisitImportHeader(KotlinParser.ImportHeaderContext context) {
@@ -63,6 +62,14 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitDeclaration(KotlinParser.DeclarationContext context) {
+        if (context.classDeclaration() != null) {
+            return context.classDeclaration().Accept(this);
+        }
+
+        if (context.objectDeclaration() != null) {
+            return context.objectDeclaration().Accept(this);
+        }
+
         if (context.functionDeclaration() != null) {
             return context.functionDeclaration().Accept(this);
         }
@@ -71,15 +78,31 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
             return context.propertyDeclaration().Accept(this);
         }
 
+        if (context.typeAlias() != null) {
+            return context.typeAlias().Accept(this);
+        }
+
         throw new Exception("Unknown context");
     }
 
     public override AstNode VisitClassDeclaration(KotlinParser.ClassDeclarationContext context) {
-        throw new Exception("Unknown context");
+        return new ClassDeclaration(
+            name: context.simpleIdentifier().GetText(),
+            primaryConstructor: (PrimaryConstructor?)context.primaryConstructor()?.Accept(this),
+            body: context.classBody()?.classMemberDeclarations().classMemberDeclaration()
+                .Select(it => it.Accept(this))
+                .Cast<ClassMemberDeclaration>()
+                .ToList() ?? []
+        );
     }
 
     public override AstNode VisitPrimaryConstructor(KotlinParser.PrimaryConstructorContext context) {
-        throw new Exception("Unknown context");
+        return new PrimaryConstructor(
+            context.classParameters().classParameter()
+                .Select(it => it.Accept(this))
+                .Cast<ClassValueParameter>()
+                .ToList()
+        );
     }
 
     public override AstNode VisitClassBody(KotlinParser.ClassBodyContext context) {
@@ -91,7 +114,11 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitClassParameter(KotlinParser.ClassParameterContext context) {
-        throw new Exception("Unknown context");
+        return new ClassValueParameter(
+            mutable: context.VAR() != null,
+            parameter: new AST.Parameter(context.simpleIdentifier().GetText(), context.type().GetText()),
+            expression: (Expression?)context.expression()?.Accept(this)
+        );
     }
 
     public override AstNode VisitDelegationSpecifiers(KotlinParser.DelegationSpecifiersContext context) {
@@ -132,11 +159,11 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         throw new Exception("Unknown context");
     }
 
-    public override AstNode VisitClassMemberDeclarations(KotlinParser.ClassMemberDeclarationsContext context) {
-        throw new Exception("Unknown context");
-    }
-
     public override AstNode VisitClassMemberDeclaration(KotlinParser.ClassMemberDeclarationContext context) {
+        if (context.declaration() != null) {
+            return new ClassMemberDeclaration.Declaration((Declaration)context.declaration().Accept(this));
+        }
+
         throw new Exception("Unknown context");
     }
 
@@ -148,19 +175,22 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         throw new Exception("Unknown context");
     }
 
-    public override AstNode VisitFunctionValueParameters(KotlinParser.FunctionValueParametersContext context) {
-        throw new Exception("Unknown context");
-    }
-
     public override AstNode VisitFunctionValueParameter(KotlinParser.FunctionValueParameterContext context) {
-        throw new Exception("Unknown context");
+        return new FunctionValueParameter(
+            parameter: (AST.Parameter)context.parameter().Accept(this),
+            expression: (Expression?)context.expression()?.Accept(this)
+        );
     }
 
     public override AstNode VisitFunctionDeclaration(KotlinParser.FunctionDeclarationContext context) {
+        var valueParameters = context.functionValueParameters().functionValueParameter()
+            .Select(it => it.Accept(this))
+            .Cast<FunctionValueParameter>()
+            .ToList();
         return new FunctionDeclaration(
             name: context.simpleIdentifier().GetText(),
-            valueParameters: new List<FunctionValueParameter>().ToImmutableList(),
-            type: null,
+            valueParameters: valueParameters,
+            type: context.type()?.GetText(),
             body: (Block)context.functionBody().Accept(this)
         );
     }
@@ -168,6 +198,10 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     public override AstNode VisitFunctionBody(KotlinParser.FunctionBodyContext context) {
         if (context.block() != null) {
             return context.block().Accept(this);
+        }
+
+        if (context.expression() != null) {
+            return new Block([new ExpressionStatement((Expression)context.expression().Accept(this))]);
         }
 
         throw new Exception("Unknown context");
@@ -194,10 +228,10 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         throw new Exception("Unknown context");
     }
 
-    private ImmutableList<string> visitVariableDeclarations(params KotlinParser.VariableDeclarationContext[] context) {
+    private List<string> visitVariableDeclarations(params KotlinParser.VariableDeclarationContext[] context) {
         return context
             .Select(it => it.simpleIdentifier().GetText())
-            .ToImmutableList();
+            .ToList();
     }
 
     public override AstNode VisitPropertyDelegate(KotlinParser.PropertyDelegateContext context) {
@@ -227,7 +261,7 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitParameter(KotlinParser.ParameterContext context) {
-        throw new Exception("Unknown context");
+        return new AST.Parameter(context.simpleIdentifier().GetText(), context.type().GetText());
     }
 
     public override AstNode VisitObjectDeclaration(KotlinParser.ObjectDeclarationContext context) {
@@ -314,12 +348,6 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         throw new Exception("Unknown context");
     }
 
-    public override AstNode VisitStatements(KotlinParser.StatementsContext context) {
-        return new Statements(context.statement()
-            .Select(it => (Statement)it.Accept(this))
-            .ToImmutableList());
-    }
-
     public override AstNode VisitStatement(KotlinParser.StatementContext context) {
         if (context.declaration() != null) {
             return new DeclarationStatement((Declaration)context.declaration().Accept(this));
@@ -349,7 +377,10 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitBlock(KotlinParser.BlockContext context) {
-        return new Block((Statements)context.statements().Accept(this));
+        return new Block(context.statements().statement()
+            .Select(it => it.Accept(this))
+            .Cast<Statement>()
+            .ToList());
     }
 
     public override AstNode VisitLoopStatement(KotlinParser.LoopStatementContext context) {
@@ -381,14 +412,6 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
             op: (AssignmentAndOperator)context.assignmentAndOperator().Accept(this),
             expression: (Expression)context.expression().Accept(this)
         );
-    }
-
-    public override AstNode VisitSemi(KotlinParser.SemiContext context) {
-        throw new Exception("Unknown context");
-    }
-
-    public override AstNode VisitSemis(KotlinParser.SemisContext context) {
-        throw new Exception("Unknown context");
     }
 
     public override AstNode VisitExpression(KotlinParser.ExpressionContext context) {
@@ -608,7 +631,7 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         }
 
         if (context.navigationSuffix() != null) {
-            return new PostfixUnarySuffix.NavigationSuffix();
+            return context.navigationSuffix().Accept(this);
         }
 
         throw new Exception("Unknown context");
@@ -660,11 +683,66 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitNavigationSuffix(KotlinParser.NavigationSuffixContext context) {
+        if (context.memberAccessOperator().DOT() != null) {
+            if (context.simpleIdentifier() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.Navigation.Identifier(
+                    identifier: context.simpleIdentifier().GetText()
+                );
+            }
+
+            if (context.parenthesizedExpression() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.Navigation.Expression(
+                    expression: (Expression)context.parenthesizedExpression().expression().Accept(this)
+                );
+            }
+
+            throw new Exception("Unknown context");
+        }
+
+        if (context.memberAccessOperator().safeNav() != null) {
+            if (context.simpleIdentifier() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.SafeNavigation.Identifier(
+                    identifier: context.simpleIdentifier().GetText()
+                );
+            }
+
+            if (context.parenthesizedExpression() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.SafeNavigation.Expression(
+                    expression: (Expression)context.parenthesizedExpression().expression().Accept(this)
+                );
+            }
+
+            throw new Exception("Unknown context");
+        }
+
+        if (context.memberAccessOperator().COLONCOLON() != null) {
+            if (context.simpleIdentifier() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.Quote.Identifier(
+                    identifier: context.simpleIdentifier().GetText()
+                );
+            }
+
+            if (context.parenthesizedExpression() != null) {
+                return new PostfixUnarySuffix.NavigationSuffix.Quote.Expression(
+                    expression: (Expression)context.parenthesizedExpression().expression().Accept(this)
+                );
+            }
+
+            if (context.CLASS() != null) {
+                return PostfixUnarySuffix.NavigationSuffix.Quote.Class.instance;
+            }
+
+            throw new Exception("Unknown context");
+        }
+
         throw new Exception("Unknown context");
     }
 
     public override AstNode VisitCallSuffix(KotlinParser.CallSuffixContext context) {
-        return new PostfixUnarySuffix.CallSuffix((ValueArguments)context.valueArguments().Accept(this));
+        return new PostfixUnarySuffix.CallSuffix(context.valueArguments().valueArgument()
+            .Select(it => it.Accept(this))
+            .Cast<ValueArgument>()
+            .ToList());
     }
 
     public override AstNode VisitAnnotatedLambda(KotlinParser.AnnotatedLambdaContext context) {
@@ -675,20 +753,13 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
         throw new Exception("Unknown context");
     }
 
-    public override AstNode VisitValueArguments(KotlinParser.ValueArgumentsContext context) {
-        return new ValueArguments(context.valueArgument()
-            .Select(it => (ValueArgument)it.Accept(this))
-            .ToImmutableList()
-        );
-    }
-
     public override AstNode VisitValueArgument(KotlinParser.ValueArgumentContext context) {
         return new ValueArgument((Expression)context.expression().Accept(this));
     }
 
     public override AstNode VisitPrimaryExpression(KotlinParser.PrimaryExpressionContext context) {
         if (context.parenthesizedExpression() != null) {
-            return context.parenthesizedExpression().Accept(this);
+            return context.parenthesizedExpression().expression().Accept(this);
         }
 
         if (context.simpleIdentifier() != null) {
@@ -703,10 +774,46 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
             return context.stringLiteral().Accept(this);
         }
 
-        throw new Exception("Unknown context");
-    }
+        if (context.callableReference() != null) {
+            Console.WriteLine("Callable reference");
+        }
 
-    public override AstNode VisitParenthesizedExpression(KotlinParser.ParenthesizedExpressionContext context) {
+        if (context.functionLiteral() != null) {
+            Console.WriteLine("Function literal");
+        }
+
+        if (context.objectLiteral() != null) {
+            Console.WriteLine("Object literal");
+        }
+
+        if (context.collectionLiteral() != null) {
+            Console.WriteLine("Collection literal");
+        }
+
+        if (context.thisExpression() != null) {
+            Console.WriteLine("This expression");
+        }
+
+        if (context.superExpression() != null) {
+            Console.WriteLine("Super expression");
+        }
+
+        if (context.ifExpression() != null) {
+            Console.WriteLine("If expression");
+        }
+
+        if (context.whenExpression() != null) {
+            Console.WriteLine("When expression");
+        }
+
+        if (context.tryExpression() != null) {
+            Console.WriteLine("Try expression");
+        }
+
+        if (context.jumpExpression() != null) {
+            return context.jumpExpression().Accept(this);
+        }
+
         throw new Exception("Unknown context");
     }
 
@@ -769,7 +876,7 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     public override AstNode VisitLineStringLiteral(KotlinParser.LineStringLiteralContext context) {
         return new StringLiteral(context.children.Skip(1).SkipLast(1)
             .Select(tree => (StringLiteral.Sub)tree.Accept(this))
-            .ToImmutableList());
+            .ToList());
     }
 
     public override AstNode VisitMultiLineStringLiteral(KotlinParser.MultiLineStringLiteralContext context) {
@@ -781,7 +888,7 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
 
                 return (StringLiteral.Sub)tree.Accept(this);
             })
-            .ToImmutableList());
+            .ToList());
     }
 
     public override AstNode VisitLineStringContent(KotlinParser.LineStringContentContext context) {
@@ -908,6 +1015,34 @@ public class Visitor : KotlinParserBaseVisitor<AstNode> {
     }
 
     public override AstNode VisitJumpExpression(KotlinParser.JumpExpressionContext context) {
+        if (context.THROW() != null) {
+            return new JumpExpression.Throw((Expression)context.expression().Accept(this));
+        }
+
+        if (context.RETURN() != null) {
+            return new JumpExpression.Return((Expression?)context.expression().Accept(this));
+        }
+
+        if (context.RETURN_AT() != null) {
+            return new JumpExpression.ReturnAt((Expression?)context.expression().Accept(this));
+        }
+
+        if (context.CONTINUE() != null) {
+            return JumpExpression.Continue.instance;
+        }
+
+        if (context.CONTINUE_AT() != null) {
+            return JumpExpression.ContinueAt.instance;
+        }
+
+        if (context.BREAK() != null) {
+            return JumpExpression.Break.instance;
+        }
+
+        if (context.BREAK_AT() != null) {
+            return JumpExpression.BreakAt.instance;
+        }
+
         throw new Exception("Unknown context");
     }
 

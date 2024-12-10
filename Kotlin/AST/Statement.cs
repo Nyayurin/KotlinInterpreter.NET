@@ -8,8 +8,7 @@ public class DeclarationStatement(Declaration declaration) : Statement {
     public Declaration declaration { get; } = declaration;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(DeclarationStatement))
-        .Append('(')
+        .Append("DeclarationStatement(")
         .appendProperty(nameof(declaration), declaration)
         .Append(')')
         .ToString();
@@ -23,8 +22,7 @@ public class DirectlyAssignmentStatement(
     public Expression.Expression expression { get; } = expression;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(DirectlyAssignmentStatement))
-        .Append('(')
+        .Append("DirectlyAssignmentStatement(")
         .appendProperty(nameof(left), left)
         .Append(", ")
         .appendProperty(nameof(expression), expression)
@@ -42,8 +40,7 @@ public class AssignmentStatement(
     public Expression.Expression expression { get; } = expression;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(AssignmentStatement))
-        .Append('(')
+        .Append("AssignmentStatement(")
         .appendProperty(nameof(left), left)
         .Append(", ")
         .appendProperty(nameof(op), op)
@@ -69,8 +66,7 @@ public class ExpressionStatement(Expression.Expression expression) : Statement {
     public Expression.Expression expression { get; } = expression;
 
     public override string ToString() => new StringBuilder()
-        .Append(nameof(ExpressionStatement))
-        .Append('(')
+        .Append("ExpressionStatement(")
         .appendProperty(nameof(expression), expression)
         .Append(')')
         .ToString();

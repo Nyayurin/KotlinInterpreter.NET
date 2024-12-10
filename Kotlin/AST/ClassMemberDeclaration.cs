@@ -7,8 +7,7 @@ public abstract class ClassMemberDeclaration : AstNode {
         public Kotlin.AST.Declaration declaration { get; } = declaration;
 
         public override string ToString() => new StringBuilder()
-            .Append(nameof(ClassMemberDeclaration))
-            .Append('(')
+            .Append("ClassMemberDeclaration.Declaration(")
             .appendProperty(nameof(declaration), declaration)
             .Append(')')
             .ToString();

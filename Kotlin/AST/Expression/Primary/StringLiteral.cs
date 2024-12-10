@@ -3,12 +3,11 @@ using System.Text;
 
 namespace Kotlin.AST.Expression.Primary;
 
-public class StringLiteral(ImmutableList<StringLiteral.Sub> contents) : PrimaryExpression {
-    public ImmutableList<Sub> contents { get; } = contents;
+public class StringLiteral(List<StringLiteral.Sub> contents) : PrimaryExpression {
+    public ImmutableList<Sub> contents { get; } = contents.ToImmutableList();
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(StringLiteral))
-        .Append('(')
+        .Append("StringLiteral(")
         .appendProperty(nameof(contents), contents)
         .Append(')')
         .ToString();
@@ -18,8 +17,7 @@ public class StringLiteral(ImmutableList<StringLiteral.Sub> contents) : PrimaryE
             public string value { get; } = value;
             
             public override string ToString() => new StringBuilder()
-                .Append(nameof(Content))
-                .Append('(')
+                .Append("StringLiteral.Sub.Content(")
                 .appendProperty(nameof(value), value)
                 .Append(')')
                 .ToString();
@@ -29,8 +27,7 @@ public class StringLiteral(ImmutableList<StringLiteral.Sub> contents) : PrimaryE
             public Kotlin.AST.Expression.Expression expression { get; } = expression;
             
             public override string ToString() => new StringBuilder()
-                .Append(nameof(Expression))
-                .Append('(')
+                .Append("StringLiteral.Sub.Expression(")
                 .appendProperty(nameof(expression), expression)
                 .Append(')')
                 .ToString();

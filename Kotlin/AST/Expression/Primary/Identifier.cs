@@ -6,8 +6,7 @@ public class Identifier(string identifier) : PrimaryExpression {
     public string identifier { get; } = identifier;
     
     public override string ToString() => new StringBuilder()
-        .Append(nameof(Identifier))
-        .Append('(')
+        .Append("Identifier(")
         .appendProperty(nameof(identifier), identifier)
         .Append(')')
         .ToString();
